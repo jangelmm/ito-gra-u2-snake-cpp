@@ -77,13 +77,13 @@ public:
         for (int i = 0; i < 20; i++) {
             for (int j = 0; j < 20; j++) {
                 if (i == serpiente.cuerpo[0].y && j == serpiente.cuerpo[0].x)
-                    cout << '#';
+                    cout << 'O';
                 else if (find_if(serpiente.cuerpo.begin() + 1, serpiente.cuerpo.end(), [&](Punto p) { return p.x == j && p.y == i; }) != serpiente.cuerpo.end())
-                    cout << '#';
+                    cout << 'o';
                 else if (i == manzana.y && j == manzana.x)
                     cout << '*';
                 else
-                    cout << '.';
+                    cout << ':';
             }
             cout << endl;
         }
