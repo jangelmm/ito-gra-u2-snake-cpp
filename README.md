@@ -129,3 +129,20 @@ si (cabeza == algunPunto) entonces
     
     - Muestra el mensaje "Juego terminado" cuando la serpiente choca consigo misma.
 
+## Instrucciones de Ejecución
+
+Para ejecutar solo da doble click en `main.cpp`
+
+Para compilar presiona (ya posicionado en el archivo `main.cpp`) en VS code `CTRL + ALT + N`
+
+Modifica la instruccion de la terminal por lo siguiente
+
+```
+cd "Ruta" ; if ($?) { g++ main.cpp Juego.cpp Serpiente.cpp -o main } ; if ($?) { .\main }
+```
+
+**Ejemplo**
+
+```
+cd "d:\Documentos\Programacion\Cpp\ito\Graficacion\snake\" ; if ($?) { g++ main.cpp Juego.cpp Serpiente.cpp -o main } ; if ($?) { .\main }
+```
