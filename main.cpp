@@ -15,5 +15,6 @@ int main() {
     }
 
     cout<< "\nJuego terminado!" <<endl;
+    cin.ignore();
     return 0;
 }
