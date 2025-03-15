@@ -131,7 +131,7 @@ si (cabeza == algunPunto) entonces
 
 ## Instrucciones de Ejecución
 
-Para ejecutar solo da doble click en `main.cpp`
+Para ejecutar solo da doble click en `main.exe`
 
 Para compilar presiona (ya posicionado en el archivo `main.cpp`) en VS code `CTRL + ALT + N`
 
