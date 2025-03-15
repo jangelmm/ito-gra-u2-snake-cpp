@@ -28,6 +28,9 @@ void Juego::generarManzana() {
 
 void Juego::dibujar() {
     system("cls");
+
+    cout << "\t.: ~~~*SNAKE GAME*~~~ :." << endl;
+    cout<<"--------------------\n\n";
     for (int i = 0; i < 20; i++) {
         for (int j = 0; j < 20; j++) {
             if (i == serpiente.cuerpo[0].y && j == serpiente.cuerpo[0].x)
@@ -41,6 +44,11 @@ void Juego::dibujar() {
         }
         cout << endl;
     }
+    cout<<"--------------------";
+    cout << "\n\n" << endl;
+    cout << "Puntaje: " << serpiente.cuerpo.size() - 1 << endl;
+    cout << "Controles: W, A, S, D" << endl;
+    cout << "Presiona CTRL + C para salir" << endl;
 }
 
 void Juego::actualizar() {

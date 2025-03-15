@@ -1,5 +1,4 @@
-#ifndef JUEGO_H
-#define JUEGO_H
+#pragma once
 
 #include "Serpiente.h"
 #include "Punto.h"
@@ -20,5 +19,3 @@ public:
     void actualizar();
     bool terminado();
 };
-
-#endif
