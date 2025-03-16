@@ -28,7 +28,7 @@ moverDerecha(
 misma lógica para los otros metodos
 
 
-Punto
+Punto:
 - x
 - y
 + moverArriba
