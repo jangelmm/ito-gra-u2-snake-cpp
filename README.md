@@ -4,11 +4,81 @@
 - Diego García Jennifer  
 - Martínez Mendoza Jesús Ángel  
 
-**Instituto Tecnológico de Oaxaca | TecNM Campus Oaxaca**  
-**Carrera:** Ingeniería en Sistemas Computacionales  
-**Semestre:** 6to  
-**Materia:** Graficación  
-**Versión:** 2.0
+## Instrucciones 
+
+>Crear el juego del gusanito.
+>Todo a mano y a consola en forma de matriz.
+>Usar translaciones
+
+## Algoritmo General (Inicio)
+
+```
+Clases:
+
+Serpiente:
+- puntoInicial
+- cuerpo[puntos]  //un Vector de puntos usando vector.h
++ crecerUnPunto()
++ moverArriba
++ moverAbajo
++ moverIzquierda
++ moverDerecha
+
+moverDerecha(
+	recorrer cada punto a la derecho
+		si(posicion punto == 19) actualizer a 0,0
+misma lógica para los otros metodos
+
+
+Punto:
+- x
+- y
++ moverArriba
++ moverAbajo
++ moverIzquierda
++ moverDerecha
+
+main
+
+1. Crear una matriz de 20 x 20 
+2. Crear un punto aleatorio que se llamara manzana "0" 
+3. Crear la serpiente (0,0) 0
+4. Direccion = D, que avance una posición cada Segundo, al igual que se actualice cada segundo
+5. Repetir el siguiente bucle
+	dibujar la matriz con manzana y serpiente
+	segun (Direccion)
+		case D:
+			mover serpiente a la derecho()
+		case I: 
+			mover serpiente a la izquierda()
+		Case A: 
+			mover serpiente a la Arriba()
+		Case B: 
+			mover serpiente a la Abajo()
+
+si (punto_inicial == manzana)
+	crecer en punto (usando los dos últimos puntos de dirección que concidan, por ejemplo si tienen la misma x, o la misma y, en esa dirección crecen i es >=3) o usando la cabeza
+
+si (cabeza == algunPunto) entonces
+	fin el juego
+
+
+```
+## Algoritmo detallado según las clases
+
+#### **Clase Serpiente**
+
+- **Atributos:**
+    
+    - `vector<Punto> cuerpo`: Guarda las coordenadas de cada parte de la serpiente.
+    - `bool debeCrecer`: Indica si la serpiente debe crecer tras comer una manzana.
+- **Métodos:**
+    
+    - `Serpiente(int x, int y)`: Crea una serpiente con una cabeza en `(x, y)`.
+    - `mover(Punto direccion)`: Mueve la cabeza de la serpiente según la dirección dada.
+        - Si la serpiente sale de los límites, reaparece en el lado opuesto (efecto "teletransporte").
+        - Si `debeCrecer` es `true`, no elimina la cola, haciendo que la serpiente crezca.
+    - `crecer()`: Activa la bandera `debeCrecer` para el próximo movimiento.
 
 ---
 
@@ -98,22 +168,3 @@ cd "Ruta_del_proyecto" ; if ($?) { g++ main.cpp Juego.cpp Serpiente.cpp -o main 
 ```bash
 cd "d:\Documentos\Programacion\Cpp\ito\Graficacion\snake\" ; if ($?) { g++ main.cpp Juego.cpp Serpiente.cpp -o main } ; if ($?) { .\main }
 ```
-
-### Ejecución
-
-- En Windows, haz doble clic en `main.exe` o ejecútalo desde la terminal.
-- En otros sistemas, ejecuta `./main` en la terminal.
-
----
-
-## Notas Adicionales
-
-- **Algoritmo de Bresenham:**  
-  Se implementa manualmente para dibujar líneas entre los puntos de la serpiente, logrando que el cuerpo se vea continuo incluso al girar.
-
-- **Traslaciones:**  
-  Se usan para mover la serpiente en el tablero.
-
-- **Colisiones:**  
-  El juego finaliza si la serpiente choca con los bordes o consigo misma, aumentando el desafío.
-
