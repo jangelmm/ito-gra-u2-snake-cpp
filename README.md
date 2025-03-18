@@ -104,6 +104,10 @@ cd "d:\Documentos\Programacion\Cpp\ito\Graficacion\snake\" ; if ($?) { g++ main.
 - En Windows, haz doble clic en `main.exe` o ejecútalo desde la terminal.
 - En otros sistemas, ejecuta `./main` en la terminal.
 
+### Prueba de Ejecución
+![Snake](https://github.com/user-attachments/assets/a1e8ba4b-575e-40e9-8e2e-2b42001f4ad3)
+
+
 ---
 
 ## Notas Adicionales
