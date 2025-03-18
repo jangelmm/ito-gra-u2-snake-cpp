@@ -105,8 +105,7 @@ cd "d:\Documentos\Programacion\Cpp\ito\Graficacion\snake\" ; if ($?) { g++ main.
 - En otros sistemas, ejecuta `./main` en la terminal.
 
 ### Prueba de Ejecución
-![Snake](https://github.com/user-attachments/assets/a1e8ba4b-575e-40e9-8e2e-2b42001f4ad3)
-
+![SnakeGame](https://github.com/user-attachments/assets/2602484a-fee8-4fdf-9138-84ffb4104d53)
 
 ---
 
