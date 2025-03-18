@@ -68,19 +68,26 @@ void Juego::actualizar() {
         case 'D': dir.x = 1; break;
     }
 
-    serpiente.mover(dir);
+    try {
+        serpiente.mover(dir);
 
-    if (serpiente.cuerpo[0].x == manzana.x && serpiente.cuerpo[0].y == manzana.y) {
-        serpiente.crecer();
-        generarManzana();
-    }
+        if (serpiente.cuerpo[0].x == manzana.x && serpiente.cuerpo[0].y == manzana.y) {
+            serpiente.crecer();
+            generarManzana();
+        }
 
-    if (find_if(serpiente.cuerpo.begin() + 1, serpiente.cuerpo.end(), [&](Punto p) {
-        return p.x == serpiente.cuerpo[0].x && p.y == serpiente.cuerpo[0].y;
-    }) != serpiente.cuerpo.end()) {
+        if (find_if(serpiente.cuerpo.begin() + 1, serpiente.cuerpo.end(), [&](Punto p) {
+            return p.x == serpiente.cuerpo[0].x && p.y == serpiente.cuerpo[0].y;
+        }) != serpiente.cuerpo.end()) {
+            gameOver = true;
+        }
+
+    } catch (const runtime_error& e) {
+        cout << e.what() << endl;
         gameOver = true;
     }
 }
+
 
 bool Juego::terminado() {
     return gameOver;

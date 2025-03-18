@@ -1,4 +1,5 @@
 #include "Serpiente.h"
+#include <stdexcept>
 
 Serpiente::Serpiente(int x, int y) {
     cuerpo.push_back({x, y});
@@ -7,11 +8,10 @@ Serpiente::Serpiente(int x, int y) {
 void Serpiente::mover(Punto direccion) {
     Punto nuevaCabeza = {cuerpo[0].x + direccion.x, cuerpo[0].y + direccion.y};
 
-    // Teletransporte si sale del límite
-    if (nuevaCabeza.x >= 20) nuevaCabeza.x = 0;
-    if (nuevaCabeza.x < 0) nuevaCabeza.x = 19;
-    if (nuevaCabeza.y >= 20) nuevaCabeza.y = 0;
-    if (nuevaCabeza.y < 0) nuevaCabeza.y = 19;
+    // Detectar colisión con los límites del mapa
+    if (nuevaCabeza.x >= 20 || nuevaCabeza.x < 0 || nuevaCabeza.y >= 20 || nuevaCabeza.y < 0) {
+        throw runtime_error("Game Over: La serpiente choco contra la pared!");
+    }
 
     cuerpo.insert(cuerpo.begin(), nuevaCabeza);
 
@@ -21,6 +21,7 @@ void Serpiente::mover(Punto direccion) {
         debeCrecer = false;
     }
 }
+
 
 void Serpiente::crecer() {
     debeCrecer = true;
