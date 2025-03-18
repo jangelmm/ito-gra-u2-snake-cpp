@@ -1,4 +1,5 @@
 #include "Juego.h"
+#include "Bresenham.h"
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
@@ -27,26 +28,45 @@ void Juego::generarManzana() {
 }
 
 void Juego::dibujar() {
+    const int filas = 20, cols = 20;
+    char board[filas][cols+1]; 
+
+    for (int i = 0; i < filas; i++) {
+        for (int j = 0; j < cols; j++) {
+            board[i][j] = ':'; // fondo
+        }
+        board[i][cols] = '\0';
+    }
+    
+    board[manzana.y][manzana.x] = '*'; //Manzanita :)
+    
+    //Dibujar la serpiente
+    if (serpiente.cuerpo.size() == 1) {
+        board[serpiente.cuerpo[0].y][serpiente.cuerpo[0].x] = 'O'; // cabeza
+    } else {
+        for (size_t i = 0; i < serpiente.cuerpo.size() - 1; i++) {
+            vector<Punto> linea = bresenham(serpiente.cuerpo[i], serpiente.cuerpo[i+1]);
+            // O es la cabeza, o es el cuerpo
+            char caracter = (i == 0) ? 'O' : 'o';
+            for (Punto p : linea) {
+                // Revisar si esta dentro
+                if (p.x >= 0 && p.x < cols && p.y >= 0 && p.y < filas)
+                    board[p.y][p.x] = caracter;
+            }
+        }
+    }
+    
     system("cls");
 
     cout << "\t.: ~~~*SNAKE GAME*~~~ :." << endl;
-    cout<<"--------------------\n\n";
-    for (int i = 0; i < 20; i++) {
-        for (int j = 0; j < 20; j++) {
-            if (i == serpiente.cuerpo[0].y && j == serpiente.cuerpo[0].x)
-                cout << 'O';
-            else if (find_if(serpiente.cuerpo.begin() + 1, serpiente.cuerpo.end(), [&](Punto p) { return p.x == j && p.y == i; }) != serpiente.cuerpo.end())
-                cout << 'o';
-            else if (i == manzana.y && j == manzana.x)
-                cout << '*';
-            else
-                cout << ':';
-        }
-        cout << endl;
+    cout << "--------------------" << endl;
+    
+    for (int i = 0; i < filas; i++) {
+        cout << board[i] << endl;
     }
-    cout<<"--------------------";
-    cout << "\n\n" << endl;
-    cout << "Puntaje: " << serpiente.cuerpo.size() - 1 << endl;
+    
+    cout << "--------------------" << endl;
+    cout << "\nPuntaje: " << serpiente.cuerpo.size() - 1 << endl;
     cout << "Controles: W, A, S, D" << endl;
     cout << "Presiona CTRL + C para salir" << endl;
 }
@@ -87,7 +107,6 @@ void Juego::actualizar() {
         gameOver = true;
     }
 }
-
 
 bool Juego::terminado() {
     return gameOver;
